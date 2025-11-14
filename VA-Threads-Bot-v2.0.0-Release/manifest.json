@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "V/A Threads Bot",
+  "version": "2.0.0",
+  "description": "Automated posting and activity simulation for Threads",
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "tabs",
+    "notifications",
+    "unlimitedStorage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.threads.net/*",
+    "https://threads.net/*",
+    "https://www.threads.com/*",
+    "https://threads.com/*",
+    "https://*.firebaseapp.com/*",
+    "https://*.cloudfunctions.net/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.threads.net/*",
+        "https://threads.net/*",
+        "https://www.threads.com/*",
+        "https://threads.com/*"
+      ],
+      "js": [
+        "firebase-config.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "config/defaults.json"
+      ],
+      "matches": [
+        "https://www.threads.net/*",
+        "https://threads.net/*",
+        "https://www.threads.com/*",
+        "https://threads.com/*"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "assets/icons/16.png",
+    "48": "assets/icons/48.png",
+    "128": "assets/icons/128.png"
+  }
+}

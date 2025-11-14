@@ -1,0 +1,237 @@
+{
+  "composer.openButton": [
+    "svg[aria-label='Create']",
+    "div[role='button'] svg[aria-label='Create']",
+    "svg[aria-label='Create'][role='img']",
+    "path[d='M6 2v8m4-4H2']",
+    ".x1n2onr6 svg[aria-label='Create']",
+    ".x1yxark7",
+    ".x1elh40u svg[aria-label='Create']"
+  ],
+  "composer.textArea": [
+    "div[contenteditable='true'][role='textbox']",
+    "div[contenteditable='true'][role='textbox'][data-lexical-editor='true']",
+    "div[contenteditable='true'][role='textbox'][spellcheck='true']",
+    "div[aria-label*='Empty text field'][contenteditable='true']",
+    ".xzsf02u[contenteditable='true'][role='textbox']"
+  ],
+  "composer.submitButton": [
+    "div[role='button']:has(div:contains('Post'))",
+    ".x2lah0s div[role='button'][tabindex='0']",
+    ".xp07o12 div[role='button']",
+    "div.xc26acl",
+    ".x2lah0s > div[role='button']",
+    "div[role='button'].x1i10hfl.x1ypdohk"
+  ],
+  "composer.attachMedia": [
+    "svg[aria-label='Attach media']",
+    "svg[aria-label='Attach media'][role='img']",
+    "div[role='button'] svg[aria-label='Attach media']",
+    ".x1gaogpn",
+    "path[clip-rule='evenodd'][d*='M2.00207 9.4959']",
+    ".x1pahc9y svg[aria-label='Attach media']"
+  ],
+  "timeline.container": [
+    "main",
+    "div[role='main']",
+    "div.x78zum5.xdt5ytf"
+  ],
+  "timeline.tweetCard": [
+    "[data-pressable-container='true']",
+    "div[data-pressable-container='true']:has(time)",
+    "article",
+    "div.xrvj5dj.xd0jker",
+    "div.x1xdureb"
+  ],
+  "tweet.likeButton": [
+    "svg[aria-label='Like']",
+    "svg[aria-label='Unlike']",
+    "div[role='button'] svg[aria-label='Like']",
+    "div[role='button'] svg[aria-label='Unlike']",
+    "svg.x1i0azm7.x73je2i.xvlca1e[aria-label='Like']",
+    "svg[aria-label='Like'][role='img']",
+    ".x165d6jo svg[aria-label='Like']",
+    "path[d*='M1.34375 7.53125']"
+  ],
+  "tweet.replyButton": [
+    "svg[aria-label='Reply']",
+    "svg[aria-label='Reply'][role='img']",
+    "div[role='button'] svg[aria-label='Reply']",
+    "svg.x1i0azm7.xbh8q5q.x73je2i[aria-label='Reply']",
+    "path[d*='M15.376 13.2177']"
+  ],
+  "tweet.retweetButton": [
+    "svg[aria-label='Repost']",
+    "svg[aria-label='Repost'][role='img']",
+    "div[role='button'] svg[aria-label='Repost']",
+    "svg.x1i0azm7[aria-label='Repost']",
+    "path[d*='M6.41256 1.23531']"
+  ],
+  "tweet.shareButton": [
+    "svg[aria-label='Share']",
+    "svg[aria-label='Share'][role='img']",
+    "div[role='button'] svg[aria-label='Share']",
+    "svg.x1i0azm7.xbh8q5q.x73je2i.x1f6yumg[aria-label='Share']",
+    "path[d*='M15.6097 4.09082']"
+  ],
+  "tweet.authorLink": [
+    "a[href^='/@']",
+    "a[href^='/@'][role='link']",
+    "a.xp07o12[href^='/@']",
+    "span.xjp7ctv a[href^='/@']",
+    "div.xqcrz7y a[href*='/@']",
+    "a.x1i10hfl[href^='/@']"
+  ],
+  "tweet.textContent": [
+    "span[dir='auto']",
+    "div[dir='auto'] span",
+    "span.xi7mnp6[dir='auto']",
+    "div.x1a6qonq span.xi7mnp6[dir='auto']",
+    "span.x1a6qonq span",
+    "div.x1a6qonq span[dir='auto']",
+    ".x1a6qonq span[dir='auto']",
+    ".x7r5mf7 span[dir='auto']",
+    "span.x1lliihq.xi7mnp6[dir='auto']"
+  ],
+  "tweet.timestamp": [
+    "time[datetime]",
+    "time",
+    "a[href*='/post/'] time",
+    "time.x1rg5ohu",
+    "abbr"
+  ],
+  "tweet.postLink": [
+    "a[href*='/post/']",
+    "a[href*='/post/'] time",
+    "a[href*='/@'][href*='/post/']",
+    "a.x1lku1pv[href*='/post/']"
+  ],
+  "thread.commentSection": [
+    "[data-pressable-container='true'] ~ [data-pressable-container='true']",
+    "div.x9f619.x1n2onr6.x1ja2u2z ~ div.x9f619.x1n2onr6.x1ja2u2z"
+  ],
+  "thread.commentLikeButton": [
+    "svg[aria-label='Like']",
+    "svg[aria-label='Unlike']"
+  ],
+  "nav.home": [
+    "a[href='/']",
+    "a[href='/'][role='link']",
+    "svg[aria-label='Home']",
+    "svg[aria-label='Threads']",
+    "svg[aria-label='Home'][role='img']",
+    "a.x1i10hfl[href='/']",
+    "path[d='M141.537 88.9883']"
+  ],
+  "nav.search": [
+    "a[href='/search']",
+    "a[href='/search'][role='link']",
+    "svg[aria-label='Search']",
+    "svg[aria-label='Search'][role='img']",
+    "a.x1i10hfl[href='/search']"
+  ],
+  "nav.notifications": [
+    "a[href='/activity']",
+    "a[href='/activity'][role='link']",
+    "svg[aria-label='Notifications']",
+    "svg[aria-label='Notifications'][role='img']",
+    "a.x1i10hfl[href='/activity']"
+  ],
+  "nav.profile": [
+    "a[href^='/@'][aria-current='page']",
+    "a[href^='/@eli'][role='link']",
+    "a[href^='/@eli']",
+    "svg[aria-label='Profile']",
+    "svg[aria-label='Profile'][role='img']",
+    "a.x1i10hfl[href^='/@']"
+  ],
+  "profile.followButton": [
+    "svg[aria-label='Follow']",
+    "svg[aria-label='Follow'][role='img']",
+    "div[role='button'] svg[aria-label='Follow']",
+    "svg.x117rol3[aria-label='Follow']",
+    "path[d*='M4.99512 8.66895']"
+  ],
+  "media.image": [
+    "img[draggable='false']",
+    "picture img",
+    "[data-pressable-container='true'] img",
+    "img.xl1xv1r"
+  ],
+  "post.moreButton": [
+    "svg[aria-label='More']",
+    "svg[aria-label='More'][role='img']",
+    "svg.x102ru31[aria-label='More']",
+    "circle[cx='12'][cy='12'][r='1.5']"
+  ],
+  "post.metrics": {
+    "likes": "span.x1o0tod",
+    "replies": "svg[aria-label='Reply'] ~ span span.x1o0tod",
+    "reposts": "svg[aria-label='Repost'] ~ span span.x1o0tod"
+  },
+  "post.replyCount": [
+    "span.x1o0tod",
+    "svg[aria-label*='Reply'] ~ span span.x1o0tod",
+    "svg[aria-label*='Répondre'] ~ span span.x1o0tod",
+    "svg[aria-label*='epl'] ~ span span.x1o0tod",
+    "svg[aria-label*='épon'] ~ span span.x1o0tod"
+  ],
+  "floatingComposer.button": [
+    "div[role='button'] svg[aria-label='Create']",
+    ".x1elh40u[role='button']",
+    ".xc5fred[role='button']",
+    "div.x1elh40u svg[aria-label='Create']"
+  ],
+  "floatingComposer.textArea": [
+    "div[contenteditable='true'][role='textbox']",
+    ".x1elh40u ~ div[contenteditable='true']",
+    ".xc5fred ~ div[contenteditable='true']"
+  ],
+  "floatingComposer.submitButton": [
+    "div[role='button'][tabindex='0']:has(div:contains('Post'))",
+    ".x2lah0s div[role='button'][tabindex='0']",
+    ".xp07o12 div[role='button']"
+  ],
+  "verification.modal": [
+    "[role='dialog']",
+    ".modal",
+    "div[role='dialog'][aria-modal='true']",
+    "div.modal-container"
+  ],
+  "verification.fileInput": [
+    "input[type='file']",
+    "input[type='file'][accept*='image']",
+    "input[type='file'][accept*='video']"
+  ],
+  "verification.mediaPreview": [
+    "img[draggable='false']",
+    "video",
+    "img[draggable='false']:not([alt=''])",
+    "video[controls]"
+  ],
+  "auth.loggedInIndicators": [
+    "a[href='/new/thread']",
+    "a[href*='/@']",
+    "div[role='button'][aria-label*='Create']",
+    "nav a[href='/activity']"
+  ],
+  "auth.homeLink": [
+    "a[href='/']",
+    "a[href*='threads.net']",
+    "a[aria-label='Home']",
+    "a[aria-label*='home' i]",
+    "nav a[href='/']"
+  ],
+  "spoiler.hideButton": [
+    "[aria-label*='spoiler' i]",
+    "[aria-label*='hide' i]",
+    "[aria-label*='hidden' i]",
+    "button[aria-label*='spoiler']"
+  ],
+  "comment.allLikeButtons": [
+    "svg[aria-label='Like']",
+    "svg[aria-label='Unlike']",
+    "div[role='button'] svg[aria-label='Like']",
+    "div[role='button'] svg[aria-label='Unlike']"
+  ]
+}

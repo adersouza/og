@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Threads Bot</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app" role="application">
+    <!-- Header -->
+<header id="hdr">
+  <div class="header-top">
+    <img src="images/23.png" alt="V/A Automation" id="headerLogo">
+    <div class="title-container">
+      <div id="userInfo" class="user-info"></div>
+      <h1 id="title">Threads Bot</h1>
+    </div>
+    <div id="statusBar">
+      <span id="statusChip" class="status-badge">Stopped</span>
+    </div>
+  </div>
+  <div id="primaryAction">
+    <button id="btnStartStop" aria-pressed="false">Start Bot</button>
+  </div>
+  <div id="timers">
+    <span id="timerPost">
+      <label>Next Post:</label>
+      <span class="value">Disabled</span>
+    </span>
+    <span id="timerActivity">
+      <label>Next Activity:</label>
+      <span class="value">Disabled</span>
+    </span>
+  </div>
+</header>
+
+    <!-- Navigation Tabs -->
+    <nav id="tabs" role="tablist">
+  <button id="tabDashboard" role="tab" aria-controls="panelDashboard" aria-selected="true">
+    <i class="fas fa-th"></i>
+    Dashboard
+  </button>
+  <button id="tabAutopost" role="tab" aria-controls="panelAutopost" aria-selected="false">
+    <i class="fas fa-edit"></i>
+    Auto-Post
+  </button>
+  <button id="tabActivity" role="tab" aria-controls="panelActivity" aria-selected="false">
+    <i class="fas fa-chart-line"></i>
+    Activity
+  </button>
+  <button id="tabMedia" role="tab" aria-controls="panelMedia" aria-selected="false">
+    <i class="fas fa-images"></i>
+    Media
+  </button>
+  <button id="tabSettings" role="tab" aria-controls="panelSettings" aria-selected="false">
+    <i class="fas fa-cog"></i>
+    Settings
+  </button>
+</nav>
+
+    <!-- Main Panels -->
+    <main id="panels">
+      <!-- Dashboard Panel -->
+      <section id="panelDashboard" role="tabpanel" aria-labelledby="tabDashboard">
+        <div class="card" id="todayStats">
+          <h3>Today's Stats</h3>
+          <div class="stat-grid">
+            <div class="stat">
+              <label>Posts Today:</label>
+              <span id="postsToday">0</span>
+            </div>
+            <div class="stat">
+              <label>Total Posts (Lifetime):</label>
+              <span id="totalPostsLifetime">0</span>
+            </div>
+            <div class="stat">
+              <label>Activity Time:</label>
+              <span id="activityTimeToday">0:00</span>
+            </div>
+            <div class="stat">
+              <label>Sessions:</label>
+              <span id="sessionsToday">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="activityStats">
+          <h3>Activity Stats</h3>
+          <div class="stat-grid">
+            <div class="stat">
+              <label>Likes Today:</label>
+              <span id="likesToday">0</span>
+            </div>
+            <div class="stat">
+              <label>Comment Likes:</label>
+              <span id="commentLikesToday">0</span>
+            </div>
+            <div class="stat">
+              <label>Threads Opened:</label>
+              <span id="tweetsOpenedToday">0</span>
+            </div>
+            <div class="stat">
+              <label>Profiles Visited:</label>
+              <span id="profilesVisitedToday">0</span>
+            </div>
+            <div class="stat">
+              <label>Scrolls:</label>
+              <span id="scrollsToday">0</span>
+            </div>
+            <div class="stat">
+              <label>Refreshes:</label>
+              <span id="refreshesToday">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="recentActivity">
+          <h3>Recent Activity</h3>
+          <ul id="activityList">
+            <!-- Dynamic content - Activity sessions only -->
+          </ul>
+        </div>
+
+        <div class="card" id="recentPosts">
+          <h3>Recent Posts</h3>
+          <ul id="postsList">
+            <!-- Dynamic content - Auto-Post events only -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- Auto-Post Panel -->
+<section id="panelAutopost" role="tabpanel" aria-labelledby="tabAutopost" hidden>
+  <div class="row">
+    <label class="toggle">
+      <input type="checkbox" id="autopostToggle">
+      <span>Enable Auto-Post</span>
+    </label>
+  </div>
+
+  <!-- POST CONTENT CARD -->
+  <div class="card">
+    <header>Post Content</header>
+
+    <div class="autopost-stats-row">
+      <span><strong>Total posts in list:</strong> <span id="postsCountN">0</span></span>
+      <span><strong>Current:</strong> <span id="postsProgressI">0</span>/<span id="postsProgressN">0</span></span>
+    </div>
+
+    <div class="field">
+      <textarea id="postsInput" placeholder="Enter your posts here. Separate posts with one blank line."></textarea>
+    </div>
+
+    <div style="text-align: center; margin-top: 12px;">
+      <button id="btnShuffleOnce">🔀 Shuffle Posts</button>
+    </div>
+  </div>
+
+  <!-- POST INTERVAL CARD -->
+  <div class="card">
+    <header>Post Interval</header>
+
+    <div class="row">
+      <label for="intervalMin">Min (minutes):</label>
+      <input type="number" id="intervalMin" value="10" min="1">
+    </div>
+
+    <div class="row">
+      <label for="intervalMax">Max (minutes):</label>
+      <input type="number" id="intervalMax" value="20" min="1">
+    </div>
+  </div>
+
+  <!-- PAUSE SCHEDULE CARD -->
+  <div class="card" id="autopostSchedule">
+    <header>Pause schedule (Auto-Post)</header>
+    <ul id="autopostPauseList">
+      <!-- Dynamic content -->
+    </ul>
+
+    <div id="autopostNewForm" class="new-pause-form" style="display: none;">
+      <div class="field">
+        <input type="text" id="autopostNewLabel" placeholder="Pause label (e.g., Lunch Break)" maxlength="25">
+      </div>
+      <div class="row">
+        <label>From:</label>
+        <input type="time" id="autopostNewStart" required>
+        <label>To:</label>
+        <input type="time" id="autopostNewEnd" required>
+      </div>
+      <div class="row">
+        <button id="autopostSaveNew" class="btn-primary">Save</button>
+        <button id="autopostCancelNew" class="btn-ghost">Cancel</button>
+      </div>
+    </div>
+    <button id="btnAutopostPauseAdd">Add Pause</button>
+  </div>
+
+  <!-- 🆕 MEDIA ATTACHMENT CARD -->
+  <div class="card" id="mediaAttachmentConfig">
+    <h4>Media Attachment</h4>
+
+    <div class="row">
+      <label class="toggle">
+        <input type="checkbox" id="mediaAutoAttach">
+        <span>Enable random media attachment</span>
+      </label>
+    </div>
+
+    <div class="row" id="mediaChanceRow" style="display: none;">
+      <label for="mediaAttachChance">Chance to attach:</label>
+      <input type="range" id="mediaAttachChance" min="0" max="100" value="20">
+      <span id="mediaChanceValue">20%</span>
+    </div>
+
+    <div class="row">
+      <label for="mediaDefaultProfile">Media profile:</label>
+      <select id="mediaDefaultProfile">
+        <option value="default">Default</option>
+        <!-- Will be populated dynamically -->
+      </select>
+    </div>
+
+    <div class="note">
+      <h5>📖 How to format your posts:</h5>
+
+      <div class="note-section">
+        <strong>Separate posts with blank lines</strong>
+        <p>Each post must be separated by at least one empty line.</p>
+        <code class="example">First post text here<br><br>Second post text here<br><br>Third post text here</code>
+      </div>
+
+      <div class="note-section">
+        <strong>Add media to posts</strong>
+        <p>Use these tags in your posts (media must be uploaded in Media tab first):</p>
+        <ul>
+          <li><code>[[media:1]]</code> - Attach media named "1"</li>
+          <li><code>[[media:1,2,3]]</code> - Attach multiple media (media 1, 2 and 3)</li>
+          <li><code>[[media:1-10]]</code> - Attach 1 random media from range 1 to 10</li>
+          <li><code>[[media:random:2]]</code> - Attach 2 random media from profile</li>
+        </ul>
+        <p class="tip">💡 Range syntax works with media named as numbers (1, 2, 3...)</p>
+      </div>
+
+      <div class="note-section">
+        <strong>Mark content as spoiler</strong>
+        <p>Hide content behind a spoiler:</p>
+        <code class="example">This is visible text<br>;This text will be hidden as spoiler;</code>
+        <p class="tip">💡 Wrap text between semicolons <code>;text;</code> to mark it as spoiler</p>
+      </div>
+
+      <div class="note-section">
+        <strong>Complete example</strong>
+        <code class="example">Check out this photo! [[media:sunset]]<br><br>Today's news ;Contains spoilers;<br>The ending was unexpected!<br><br>Another post [[media:1,2]]</code>
+      </div>
+    </div>
+  </div>
+
+  <div id="autopostValidationSummary">
+    <!-- Dynamic validation messages -->
+  </div>
+</section>
+
+      <!-- Activity Panel SIMPLIFIÉ -->
+<section id="panelActivity" role="tabpanel" aria-labelledby="tabActivity" hidden>
+  <div class="row">
+    <label class="toggle">
+      <input type="checkbox" id="activityToggle">
+      <span>Enable Activity</span>
+    </label>
+  </div>
+
+  <div class="card" id="activityTodayStats">
+    <h4>Today's Activity</h4>
+    <div class="stat-grid">
+      <div class="stat">
+        <label>Activity Time:</label>
+        <span id="activityTimeActive">0:00</span>
+      </div>
+      <div class="stat">
+        <label>Sessions:</label>
+        <span id="sessionsProgress">0/0</span>
+      </div>
+      <div class="stat">
+        <label>Likes:</label>
+        <span id="likesActivity">0</span>
+      </div>
+      <div class="stat">
+        <label>Comment Likes:</label>
+        <span id="commentLikesActivity">0</span>
+      </div>
+      <div class="stat">
+        <label>Threads Opened:</label>
+        <span id="tweetsOpenedActivity">0</span>
+      </div>
+      <div class="stat">
+        <label>Profiles Visited:</label>
+        <span id="profilesActivity">0</span>
+      </div>
+      <div class="stat">
+        <label>Scrolls:</label>
+        <span id="scrollsActivity">0</span>
+      </div>
+      <div class="stat">
+        <label>Notifications:</label>
+        <span id="notificationsActivity">0</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card" id="activitySchedule">
+    <header>Pause schedule (Activity)</header>
+    <ul id="activityPauseList">
+      <!-- Dynamic content -->
+    </ul>
+    
+    <div id="activityNewForm" class="new-pause-form" style="display: none;">
+      <div class="field">
+        <input type="text" id="activityNewLabel" placeholder="Pause label (e.g., Sleep)" maxlength="25">
+      </div>
+      <div class="row">
+        <label>From:</label>
+        <input type="time" id="activityNewStart" required>
+        <label>To:</label>
+        <input type="time" id="activityNewEnd" required>
+      </div>
+      <div class="row">
+        <button id="activitySaveNew" class="btn-primary">Save</button>
+        <button id="activityCancelNew" class="btn-ghost">Cancel</button>
+      </div>
+    </div>
+    <button id="btnActivityPauseAdd">Add Pause</button>
+  </div>
+
+  <div class="note">
+    <h5>How Activity works:</h5>
+    <p>The bot simulates natural browsing behavior on Threads throughout the day.</p>
+
+    <ul>
+      <li><strong>Daily Sessions:</strong> 1-6 sessions per day based on mood (Low: 1-3, Normal: 2-3, High: 3-6)</li>
+      <li><strong>Session Types:</strong> Micro (3-8 min), Short (8-15 min), Medium (12-25 min), Long (20-30 min)</li>
+      <li><strong>Default Schedule:</strong> Active from 07:00 to 23:00 (Night Off: 23:00-07:00 by default)</li>
+      <li><strong>Timeline Actions:</strong> Scrolls timeline (91.5%), occasionally opens threads (4.5%), likes posts (2.5%), views profiles (0.75%)</li>
+      <li><strong>Reading Time:</strong> 5-12 seconds per thread in timeline, 4-11 seconds when opened, 2-8 seconds for profiles</li>
+      <li><strong>Cooldowns:</strong> Waits 60-120s between likes, 10-30s between opening threads, 30-90s between profiles</li>
+      <li><strong>Smart Behavior:</strong> Pauses activity when Auto-Post is about to publish, respects pause schedules</li>
+    </ul>
+  </div>
+</section>
+
+      <!-- Media Panel -->
+      <section id="panelMedia" role="tabpanel" aria-labelledby="tabMedia" hidden>
+        
+        <!-- Sélecteur de profil -->
+        <div class="card">
+          <div class="profile-selector">
+            <label>Media Profile:</label>
+            <select id="mediaProfileSelect">
+              <option value="default">Default</option>
+            </select>
+            
+            <button id="btnNewProfile" title="New Profile">➕</button>
+            <button id="btnRenameProfile" title="Rename">✏️</button>
+            <button id="btnDeleteProfile" title="Delete">🗑️</button>
+          </div>
+        </div>
+        
+        <!-- Zone d'upload -->
+        <div class="card">
+          <div id="dropZone" class="drop-zone">
+            <input type="file" id="fileInput" multiple accept="image/*,video/*" hidden>
+            <p>📤 Drop files here or click to browse</p>
+            <small id="profileIndicator">Adding to: <strong>Default</strong></small>
+          </div>
+        </div>
+        
+        <!-- Galerie -->
+        <div class="card">
+          <h4>Media Gallery <span id="mediaCount">(0 items)</span></h4>
+          <div id="mediaGrid" class="media-grid">
+            <!-- Les médias apparaissent ici -->
+          </div>
+        </div>
+        
+        <!-- Modal pour nouveau/renommer profil -->
+        <div id="profileModal" class="modal" style="display: none;">
+          <div class="modal-content">
+            <h3 id="modalTitle">New Profile</h3>
+            <input type="text" id="profileNameInput" placeholder="Profile name (e.g., Photos Julie)" />
+            <div class="modal-buttons">
+              <button id="btnSaveProfile">Save</button>
+              <button id="btnCancelProfile">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal pour renommer média -->
+        <div id="mediaRenameModal" class="modal" style="display: none;">
+          <div class="modal-content">
+            <h3>Rename Media</h3>
+            <input type="text" id="mediaNameInput" placeholder="Media name" />
+            <div class="modal-buttons">
+              <button id="btnSaveMediaRename">Save</button>
+              <button id="btnCancelMediaRename">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+<!-- Settings Panel -->
+<section id="panelSettings" role="tabpanel" aria-labelledby="tabSettings" hidden>
+  <div class="row">
+    <label for="timezoneSelect">Timezone:</label>
+    <select id="timezoneSelect">
+      <option value="UTC">UTC</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label for="darkToggle">
+      <input type="checkbox" id="darkToggle">
+      Dark mode
+    </label>
+  </div>
+
+  <div class="card" id="configExport">
+    <h4>Complete Configuration</h4>
+    <p style="font-size: 12px; color: var(--muted); margin-bottom: 12px;">
+      Includes: Settings, Posts, Media profiles & images
+    </p>
+    <button id="btnExportConfig">Export All</button>
+    <input type="file" id="fileImportConfig" accept=".json" style="display: none;">
+    <button id="btnImportConfig">Import All</button>
+  </div>
+
+  <!-- SUPPRIMER toute la card "Posts" -->
+
+  <div class="card danger" id="dangerZone">
+    <h4>Danger Zone</h4>
+    <button id="btnResetMedia" style="margin-bottom: 8px;">Reset Media Database</button>
+    <button id="btnResetAll">Reset All Data</button>
+  </div>
+</section>
+
+      <!-- Confirmation Modal (hidden by default) -->
+      <div id="modalConfirmReset" class="modal" style="display: none;">
+        <div class="modal-content">
+          <p>Type "RESET" to confirm:</p>
+          <input type="text" id="resetConfirmInput">
+          <button id="btnConfirmReset">Confirm</button>
+          <button id="btnCancelReset">Cancel</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
