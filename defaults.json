@@ -1,0 +1,127 @@
+{
+  "timezone": "UTC",
+  "darkMode": false,
+  "tweetLengthLimit": 500,
+  "autopostEnabled": false,
+  "autopostInterval": {
+    "min": 20,
+    "max": 45
+  },
+  "autopostPauses": [{
+    "id": "night",
+    "label": "Night Off",
+    "start": "23:45",
+    "end": "07:00"
+  }],
+  "postsRaw": "",
+  "activityEnabled": false,
+  "activityPauses": [{
+    "id": "night",
+    "label": "Night Off",
+    "start": "23:00",
+    "end": "07:00"
+  }],
+  "mediaAutoAttach": false,
+  "mediaAttachChance": 20,
+  "mediaSpoilerChance": 0,
+  "mediaDefaultProfile": "default",
+  "moodWeights": {
+    "low": 20,
+    "normal": 50,
+    "high": 30
+  },
+  
+  "humanBehavior": {
+    "readingTimes": {
+      
+      "tweetOpened": [4, 11],
+      "profile": [2, 8],
+      "tweetInTimeline": [5, 12],
+      "notifications": [1, 3]
+    },
+    
+    "commentBehavior": {
+
+      "likeChancePerScroll": 0.15,
+      "maxLikesPerTweet": 3,
+      "extendReadingChance": 0.05
+    },
+
+    "timelineActions": {
+  "continueScroll": 0.915,
+  "likeTweetFromTimeline": 0.025,
+  "openTweet": 0.045,
+  "openProfile": 0.0075,
+  "checkNotifications": 0.0025,
+  "refreshTimeline": 0.005
+},
+
+    "afterReadingTweet": {
+      "likeTweet": 0.20
+
+    },
+    
+    "sessionLimits": {
+      "maxProfiles": 2,
+      "maxNotificationChecks": 1
+      
+    }
+  },
+  
+  "dwellMedians": {    
+    "thread": [12, 45],    
+    "profile": [8, 25],	
+    "notifications": [5, 15]
+  
+  },
+  
+  "refractoryWindows": {
+    "LIKE_TWEET": [60, 120],
+    "LIKE_COMMENT": [3, 5],
+    "OPEN_PROFILE": [30, 90],
+    "OPEN_TWEET": [10, 30],
+    "OPEN_NOTIFICATIONS": [600, 1200]
+
+  },
+  
+  "rateLimit": {
+    "min": 1,
+    "max": 2
+  },
+  
+  "sessionsByMood": {
+    "low": [1, 3],
+    "normal": [2, 3],
+    "high": [3, 6]
+  },
+  
+  "sessionTypeDistribution": {
+    "low": {
+      "micro": 0.30,
+      "short": 0.50,
+      "medium": 0.20,
+      "long": 0.00
+    },
+    "normal": {
+      "micro": 0.20,
+      "short": 0.40,
+      "medium": 0.30,
+      "long": 0.10
+    },
+    "high": {
+      "micro": 0.10,
+      "short": 0.30,
+      "medium": 0.40,
+      "long": 0.20
+    }
+  },
+  
+  "sessionDurations": {
+    "micro": [3, 8],
+    "short": [8, 15],
+    "medium": [12, 25],
+    "long": [20, 30]
+  },
+  
+  "offDayProbability": 0.05
+}
